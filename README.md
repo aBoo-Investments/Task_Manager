@@ -6,7 +6,7 @@ By: Dusan Sula jr.
 Python - 3.9
 
 # Installation
-Clone the repository
+* Clone the repository
 Enter in the project folder cd task-manager/
 Create a virtualenv with python3.9 -m venv env
 Activate the virtualenv source /env/bin/activate
