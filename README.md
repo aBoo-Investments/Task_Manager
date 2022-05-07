@@ -1,6 +1,6 @@
 # Task_Manager
 Simple application of notes created with Django Framework.
-By: Dusan Sula jr.
+* Created by: Dusan Sula jr.
 
 # Requirements
 Python - 3.9
