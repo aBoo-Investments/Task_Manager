@@ -18,7 +18,7 @@ class BaseModel(models.Model):
 
 
 # Division of tasks according to the status to be completed
-COLOR_CHOICES = (
+STATUS_CHOICES = (
     ('pending', 'Pending'),
     ('completed', 'Completed'),
 )
@@ -37,8 +37,8 @@ class UserProfile(BaseModel):
 class Note(BaseModel):
     user = models.ManyToManyField(UserProfile, related_name='user_note')
     title = models.CharField(max_length=100, null=False, blank=False)
-    note = models.CharField(max_length=1000, null=False, blank=False)
-    color = models.CharField(max_length=100, default='pending', choices=COLOR_CHOICES)
+    note = models.TextField(max_length=1000, null=False, blank=False)
+    status = models.CharField(max_length=100, default='pending', choices=STATUS_CHOICES)
 
     def __str__(self):
         return f'{self.note}'

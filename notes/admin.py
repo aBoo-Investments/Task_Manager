@@ -9,4 +9,4 @@ class AuthorAdmin(admin.ModelAdmin):
 
 @admin.register(Note)
 class AuthorAdmin(admin.ModelAdmin):
-    list_display = ['title', 'color']
+    list_display = ['title', 'status']
