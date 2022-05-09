@@ -15,7 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from notes.views import NotesListView, NoteDetailView, NoteDeleteView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', NotesListView.as_view(), name='index'),
+    path('note/<int:pk>', NoteDetailView.as_view(), name='detail'),
+    path('delete/<int:pk>', NoteDeleteView.as_view(), name='delete')
 ]

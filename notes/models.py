@@ -29,7 +29,6 @@ class UserProfile(BaseModel):
     name = models.CharField(max_length=100, null=True, blank=True)
     surname = models.CharField(max_length=100, null=True, blank=True)
     age = models.IntegerField(null=True, blank=True)
-    image = models.ImageField(storage='uploads/', null=True, blank=True)
 
     def __str__(self):
         return f'{self.user}'
