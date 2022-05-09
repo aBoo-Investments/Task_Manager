@@ -1,5 +1,5 @@
 {% extends 'base/base.html' %}
-{% block title %}Update Note | Task Manager{% endblock title %}
+{% block title %}Create Note | Task Manager{% endblock title %}
 <!-- Start Trexoo aplication -->
 {% block content %}
 <div class="container text-center">
@@ -8,8 +8,13 @@
     {% if form.errors %}
         <p class="text-danger">Credentials is invalid!</p>
     {% endif %}
-        {{ form.as_p }}
-    <input type="submit" value="Create your note" class="btn btn-primary">
+        <h4>Title</h4>
+        <p>{{ form.title }}</p>
+        <h4>Note</h4>
+        <p>{{ form.note }}</p>
+        <h4>Status</h4>
+        <p>{{ form.status }}</p>
+    <input type="submit" value="Create note" class="btn btn-primary">
     </form>
 </div>
 {% endblock %}
