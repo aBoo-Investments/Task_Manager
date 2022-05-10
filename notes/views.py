@@ -1,3 +1,4 @@
+from django.template.response import TemplateResponse
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, DeleteView, UpdateView, CreateView
 
@@ -33,3 +34,7 @@ class NoteCreateView(CreateView):
     template_name = 'create.html'
     form_class = NoteForm
     success_url = reverse_lazy('index')
+
+
+def login_success(request):
+    return TemplateResponse(request, 'registration/login-success.html')

@@ -1,7 +1,6 @@
 {% extends 'base/base.html' %}
 {% block title %}Task Manager{% endblock title %}
 {% block content %}
-<div class="container">
     <table class="table table-striped">
           <thead>
             <tr>
@@ -13,12 +12,15 @@
           <tbody>
          {% for note in note_list %}
             <tr>
-                <td><a href="{% url 'detail' note.pk %}">{{ note.title }}</a></td>
+                {% if user.is_authenticated %}
+                    <td><a href="{% url 'detail' note.pk %}">{{ note.title }}</a></td>
+                {% else %}
+                    <td>{{ note.title }}</td>
+                {% endif %}
                 <td>{{ note.created }}</td>
                 <td>{{ note.status }}</td>
             </tr>
           </tbody>
          {% endfor %}
     </table>
-</div>
 {% endblock content %}
