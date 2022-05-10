@@ -1,8 +1,11 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-
 # Base model for user creation and modification information
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+
+
 class BaseModel(models.Model):
     created = models.DateTimeField(
         auto_now_add=True,
@@ -29,6 +32,12 @@ class UserProfile(BaseModel):
     name = models.CharField(max_length=100, null=True, blank=True)
     surname = models.CharField(max_length=100, null=True, blank=True)
     age = models.IntegerField(null=True, blank=True)
+
+    @receiver(post_save, sender=User)
+    def create_user_profile(sender, instance, created, **kwargs):
+        if created:
+            # print("create",sender, instance,created,**kwargs)
+            UserProfile.objects.create(user=instance)
 
     def __str__(self):
         return f'{self.user}'

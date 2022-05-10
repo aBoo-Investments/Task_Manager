@@ -1,11 +1,14 @@
 {% extends 'base/base.html' %}
 {% block title %}Task Manager{% endblock title %}
+<!-- Start Task_Manager application -->
 {% block content %}
+    {% if user.is_authenticated %}
     <table class="table table-striped">
           <thead>
             <tr>
                 <th scope="col">Title</th>
                 <th scope="col">Created</th>
+                <th scope="col">Modified</th>
                 <th scope="col">Status</th>
             </tr>
           </thead>
@@ -18,9 +21,15 @@
                     <td>{{ note.title }}</td>
                 {% endif %}
                 <td>{{ note.created }}</td>
+                <td>{{ note.modified }}</td>
                 <td>{{ note.status }}</td>
             </tr>
           </tbody>
          {% endfor %}
     </table>
+    {% else %}
+        <h1>
+            Login or register to view your notes!
+        </h1>
+    {% endif %}
 {% endblock content %}

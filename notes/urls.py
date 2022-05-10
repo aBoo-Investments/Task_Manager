@@ -1,5 +1,6 @@
 from django.urls import path, include
-from notes.views import NotesListView, NoteDetailView, NoteDeleteView, NoteUpdateView, NoteCreateView, login_success
+from notes.views import NotesListView, NoteDetailView, NoteDeleteView, NoteUpdateView, NoteCreateView, login_success,\
+    register
 
 urlpatterns = [
     path('', NotesListView.as_view(), name='index'),
@@ -11,4 +12,5 @@ urlpatterns = [
     path('accounts/', include("django.contrib.auth.urls"), name='logout'),
     path('accounts/', include("django.contrib.auth.urls"), name='login-success'),
     path('login-success', login_success, name='login-success'),
+    path('register', register, name='register'),
 ]
