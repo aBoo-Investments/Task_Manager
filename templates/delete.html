@@ -2,10 +2,12 @@
 {% block title %}Delete Note | Task Manager{% endblock title %}
 <!-- Start Task_Manager application -->
 {% block content %}
+<div class="container text-center">
     <form method="post">
         {% csrf_token %}
         <p>Are you sure you want to delete note "{{ object }}"?</p>
         <input class="btn btn-danger" type="submit" value="Delete">
     </form>
     <a href="#" onclick="history.back()">Back</a>
+</div>
 {% endblock %}

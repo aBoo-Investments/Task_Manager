@@ -1,11 +1,10 @@
 from django.db import models
 from django.contrib.auth.models import User
-
-# Base model for user creation and modification information
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 
 
+# Base model for user creation and modification information
 class BaseModel(models.Model):
     created = models.DateTimeField(
         auto_now_add=True,
@@ -27,8 +26,9 @@ STATUS_CHOICES = (
 )
 
 
+# User profile based on the default django model User
 class UserProfile(BaseModel):
-    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='user')
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='user')
     name = models.CharField(max_length=100, null=True, blank=True)
     surname = models.CharField(max_length=100, null=True, blank=True)
     age = models.IntegerField(null=True, blank=True)
@@ -43,11 +43,12 @@ class UserProfile(BaseModel):
         return f'{self.user}'
 
 
+# Note model for application
 class Note(BaseModel):
-    user = models.ManyToManyField(UserProfile, related_name='user_note')
+    author = models.ManyToManyField(UserProfile, related_name='author')
     title = models.CharField(max_length=100, null=False, blank=False)
-    note = models.TextField(max_length=1000, null=False, blank=False)
+    description = models.TextField(max_length=1000, null=False, blank=False)
     status = models.CharField(max_length=100, default='pending', choices=STATUS_CHOICES)
 
     def __str__(self):
-        return f'{self.note}'
+        return f'{self.description}'

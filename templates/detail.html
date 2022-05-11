@@ -2,6 +2,7 @@
 {% block title %}Detail Note | Task Manager{% endblock title %}
 <!-- Start Task_Manager application -->
 {% block content %}
+<div class="container text-center">
     <h1>
         {{ note.title }}
     </h1>
@@ -9,7 +10,7 @@
         Created: {{ note.created }}
     </p><hr>
     <h3>
-        {{ note.note }}
+        {{ note.description }}
     </h3><hr>
     <h5>
         {{ note.color }}
@@ -19,4 +20,5 @@
     </p>
     <a href="{% url 'update' note.pk %}" type="button" class="btn btn-primary">Update</a>
     <a href="{% url 'delete' note.pk %}" type="button" class="btn btn-danger">Delete</a>
+</div>
 {% endblock %}

@@ -6,12 +6,14 @@
     <form action="" method="post">
     {% csrf_token %}
     {% if form.errors %}
-        <p class="text-danger">Credentials is invalid!</p>
+        <p class="text-danger">You are filling out the field incorrectly, please try again!</p>
     {% endif %}
         <h4>Title</h4>
         <p>{{ form.title }}</p>
+        <h4>Author</h4>
+        <p>{{ form.author }}</p>
         <h4>Note</h4>
-        <p>{{ form.note }}</p>
+        <p>{{ form.description }}</p>
         <h4>Status</h4>
         <p>{{ form.status }}</p>
     <input type="submit" value="Create note" class="btn btn-primary">

@@ -6,7 +6,7 @@
     <form action="" method="post">
     {% csrf_token %}
     {% if form.errors %}
-        <p class="text-danger">Credentials is invalid!</p>
+        <p class="text-danger">You are filling out the field incorrectly, please try again!</p>
     {% endif %}
         {{ form.as_p }}
     <input type="submit" value="Update your note" class="btn btn-primary">

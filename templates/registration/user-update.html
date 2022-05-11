@@ -1,0 +1,20 @@
+{% extends 'base/base.html' %}
+{% block title %}Update Profile | Task Manager{% endblock title %}
+<!-- Start Task_Manager application -->
+{% block content %}
+<div class="container text-center">
+    <form action="" method="post">
+        {% csrf_token %}
+        {% if form.errors %}
+            <p class="text-danger">You are filling out the field incorrectly, please try again!</p>
+        {% endif %}
+            <h4>Your name</h4>
+            <p>{{ form.name }}</p>
+            <h4>Your surname</h4>
+            <p>{{ form.surname }}</p>
+            <h4>How old are you?</h4>
+            <p>{{ form.age }}</p>
+            <input type="submit" value="Update your profile" class="btn btn-primary">
+        </form>
+</div>
+{% endblock %}
